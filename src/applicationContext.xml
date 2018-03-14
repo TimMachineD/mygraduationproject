@@ -41,7 +41,7 @@
 		<!-- 配置Hibernate的映射文件 -->
 		<property name="mappingResources">
 			<list>
-				<!-- <value>cn/itcast/shop/user/vo/User.hbm.xml</value> -->
+				<value>du/shop/entity/User.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -63,7 +63,22 @@
 	</bean>
 	<!-- 用户模块的Action -->
 	<bean id="userAction" class="du.shop.action.UserAction" scope="prototype">
-		
+		<!-- 注入Service -->
+		<property name="userService" ref="userService"/>
 	</bean>
+	
+	
+	<!-- Service的配置  ===========================-->
+	<bean id="userService" class="du.shop.service.UserService">
+		<property name="userDao" ref="userDao"/>
+	</bean>
+	
+
+	
+	<!-- Dao的配置  ===========================-->
+	<bean id="userDao" class="du.shop.dao.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 	
 </beans>
