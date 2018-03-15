@@ -130,9 +130,20 @@ padding-bottom: 0px; color: #fff; line-height: 23px; padding-top: 0px; height: 2
 text-align: center
 }
 .info_bk1 {
-	border-right: #dfe0e8 1px solid; padding-right: 0px; border-top: #dfe0e8 1px solid; padding-left: 0px; 
-background: #fafcfe; padding-bottom: 13px; margin: 0px 0px 20px 7px; border-left: #dfe0e8 1px solid; 
-width: 761px; padding-top: 13px; border-bottom: #dfe0e8 1px solid
+	border-right: #dfe0e8 1px solid; 
+	padding-right: 0px; 
+	border-top: #dfe0e8 1px solid; 
+	padding-left: 0px; 
+	background: #fafcfe; 
+	padding-bottom: 13px; 
+	margin: 0px 0px 20px 7px;
+	border-left: #dfe0e8 1px solid; 
+	width: 761px; 
+	padding-top: 13px; 
+	order-bottom: #dfe0e8 1px solid;
+	position: relative;
+	left:200px;
+	top:200px;
 }
 .register{
 	width:764px;

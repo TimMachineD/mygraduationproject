@@ -13,6 +13,7 @@
 	<action name="user_*" class="userAction" method="{1}">
 		<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 		<result name="msg">/WEB-INF/jsp/success.jsp</result>
+		
 	</action>
 </package>
 </struts>

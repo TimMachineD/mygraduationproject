@@ -14,5 +14,7 @@
 		<property name="email"/>
 		<property name="phone"/>
 		<property name="addr"/>
+		<property name="state"/>
+		<property name="code"/>
 	</class>
 </hibernate-mapping>
