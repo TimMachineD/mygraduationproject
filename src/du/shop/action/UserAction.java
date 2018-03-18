@@ -18,7 +18,7 @@ import du.shop.service.UserService;
  *
  */
 public class UserAction extends ActionSupport implements ModelDriven<User> {
-	// 模型驱动使用的对象
+		// 模型驱动使用的对象
 		private User user = new User();
 
 		public User getModel() {

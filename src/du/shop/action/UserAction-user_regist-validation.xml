@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="password">
+		<field-validator type="stringlength">
+			<param name="minLength">8</param>
+			<param name="maxLength">16</param>
+			<message>密码长度要在8-16位之间</message>
+		</field-validator>
+	</field>
+	<!-- 校验真实姓名 -->
+	<field name="name">
+		<field-validator type="requiredstring">
+			<message>姓名不能为空!</message>
+		</field-validator>
+	</field>	
+	<!-- 校验地址 -->
+	<field name="addr">
+		<field-validator type="requiredstring">
+			<message>地址不能为空!</message>
+		</field-validator>
+	</field>	
+	<!-- 校验邮箱 -->
+	<field name="email">
+		<field-validator type="email">
+			<message>邮箱格式不正确!</message>
+		</field-validator>
+	</field>
+	<field name="email">
+		<field-validator type="requiredstring">
+			<message>邮箱不能为空!</message>
+		</field-validator>
+	</field>	
+	<!-- 电话 -->
+	<field name="phone">
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[\d{11}]]></param>
+			<message>手机号码格式不正确!</message>
+		</field-validator>
+	</field>
+	<field name="phone">
+		<field-validator type="requiredstring">
+			<message>电话不能为空!</message>
+		</field-validator>
+	</field>
+</validators>

@@ -10,6 +10,6 @@
   
   <body>
     <jsp:include page="head.jsp"></jsp:include>
-	
+	<jsp:include page="foot.jsp"></jsp:include>
   </body>
 </html>
