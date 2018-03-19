@@ -10,6 +10,18 @@
   
   <body>
     <jsp:include page="head.jsp"></jsp:include>
+    <div class="menu">
+		<ul>
+			<li><a href="index.action">Ê×Ò³</a> |</li>
+			<s:iterator var="c" value="#session.cList">
+			<li>
+			<!-- <a href="product_findByCid.action?cid=<s:property value="#c.cid"/>&page=1"> -->
+			<s:property value="#c.cname"/></a> |</li>
+			</s:iterator>
+
+		</ul>
+	</div>	
+    
 	<jsp:include page="foot.jsp"></jsp:include>
   </body>
 </html>

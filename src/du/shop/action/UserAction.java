@@ -106,7 +106,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			// 判断
 			if (existUser == null) {
 				// 登录失败
-				this.addActionError("登录失败:用户名或密码错误或用户未激活!");
+				this.addActionError("登录失败!");
 				return LOGIN;
 			} else {
 				// 登录成功

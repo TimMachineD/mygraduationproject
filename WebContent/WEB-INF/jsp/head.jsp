@@ -16,15 +16,24 @@
 			<div class=head_right_nei>
 				<div class=head_top>
 					<div class=head_buy>
-						<strong> <a href="#"> <IMG
-								height=15 src="images/buy01.jpg" width=16>购物车
-						</a>| <a href="#" style="margin-right: 20px;">个人中心</a> <s:if
-								test="#session.user==null">
-								<a href="login.jsp"> <span>登录</span></a>
-							</s:if> | <s:else>
-								<a href="logout.action"> <span>注销</span>
+						<strong> <a href="#"> <IMG height=15
+								src="images/buy01.jpg" width=16>购物车
+						</a>| 
+							<s:if
+								test="#session.existUser==null">
+								<a href="#" style="margin-right: 20px;">未知用户</a> 
+								<a 
+									href="${ pageContext.request.contextPath }/user_loginPage.action">
+									<span>登录</span>
 								</a>
-							</s:else> <a href="${ pageContext.request.contextPath }/user_registPage.action" target=_top> <span>注册</span>
+							</s:if>
+							<s:else>
+								<a href="#" style="margin-right: 20px;"><s:property value="#session.existUser.name"/></a>
+								<a href="${ pageContext.request.contextPath }/user_quit.action"> <span>注销</span>
+								</a>
+							</s:else> |  <a
+							href="${ pageContext.request.contextPath }/user_registPage.action"
+							target=_top> <span>注册</span>
 						</a>
 					</div>
 					</strong>
