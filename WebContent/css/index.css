@@ -158,7 +158,35 @@ text-align: center
 	font-size: 15px;
 	
 }
-.menu{
-	
+.category{
+	height:300px;
+	width:100px;
+	position: absolute;
+	top:150px;
+	left:280px;
 }
 
+.category ul{
+	padding-right: 7px; padding-left: 7px; padding-bottom: 0px; width: 135px; padding-top: 0px
+}
+.category ul li{
+	padding-left: 10px; 
+	margin-bottom: 6px;
+	font-size: 14px;
+}
+.categorySecond{
+	height:150px;
+	width:500px;
+	position: absolute;
+	top:150px;
+	left:500px;
+	background-color: blue;
+}
+.newProduct{
+	height:500px;
+	width:800px;
+	position: absolute;
+	top:460px;
+	left:300px;
+	background-color: red;
+}

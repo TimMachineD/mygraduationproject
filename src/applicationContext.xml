@@ -63,7 +63,7 @@
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="du.shop.index.IndexAction" scope="prototype">
 		<property name="categoryService" ref="categoryService"/>
-		<property name="productService" ref="productService"/>
+		<!-- <property name="productService" ref="productService"/> -->
 	</bean>
 	<!-- 用户模块的Action -->
 	<bean id="userAction" class="du.shop.action.UserAction" scope="prototype">
@@ -76,10 +76,12 @@
 	<bean id="userService" class="du.shop.service.UserService">
 		<property name="userDao" ref="userDao"/>
 	</bean>
-	<bean id="productService" class="du.shop.service.ProductService">
+	<!-- <bean id="productService" class="du.shop.service.ProductService">
 		<property name="productDao" ref="productDao"/>
+	</bean> -->
+	<bean id="categoryService" class="du.shop.service.CategoryService">
+		<property name="categoryDao" ref="categoryDao"/>
 	</bean>
-
 	
 	<!-- Dao的配置  ===========================-->
 	<bean id="userDao" class="du.shop.dao.UserDao">
