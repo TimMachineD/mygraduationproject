@@ -1,5 +1,6 @@
 package du.shop.action;
 
-public class ProductAction {
 
+public class ProductAction {
+	
 }
