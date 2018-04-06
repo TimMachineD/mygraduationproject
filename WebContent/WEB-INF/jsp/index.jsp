@@ -13,17 +13,17 @@
     <jsp:include page="head.jsp"></jsp:include>
     <div class="category">
 		<ul>
-			<li><a href="index.action">Ê×Ò³</a> |</li>
+			<li>
+				<a href="index.action">Ê×Ò³</a>
+				<img alt="" src="">
+			</li>
 			<s:iterator var="c" value="#session.cList">
 			<li>
-			
-			<a href="#">
-			<s:property value="#c.cname"/></a> |</li>
+			<a href="#"><s:property value="#c.cname"/></a>
+			</li>
 			</s:iterator>
-
 		</ul>
 	</div>	
-    <div class="categorySecond"></div>
     <div class="newProduct">
     	<div class="productImage">
 					<a title="" style="outline-style: none; text-decoration: none;" id="zoom" href="#" rel="gallery">
