@@ -4,10 +4,15 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+<!-- 开发模式 -->
+<constant name="struts.devMode" value="false" />
+
 <package name="default" extends="struts-default" namespace="/">
 	<!-- 配置首页访问的Action -->
-	<action name="index" class="indexAction">
-		<result name="index">/WEB-INF/jsp/index.jsp</result>
+	<action name="index_*" class="indexAction" method="{1}">
+		<result name="toIndex">/WEB-INF/jsp/index.jsp</result>
+		<result name="toSecCategory">/WEB-INF/jsp/csListTest.jsp</result>
+		<result name="error">/WEB-INF/jsp/success.jsp</result>
 	</action>
 	<!-- 配置用户模块的Action -->
 	<action name="user_*" class="userAction" method="{1}">
@@ -19,5 +24,10 @@
 		<result name="quit" type="redirectAction">index</result>
 		<result name="input">/WEB-INF/jsp/regist.jsp</result>
 	</action>
+	<!-- 一级分类的action -->
+	<!-- <action name="category" class="categoryAction">
+		<result name="csList">/WEB-INF/jsp/csList.jsp</result>
+	</action>
+	-->
 </package>
 </struts>

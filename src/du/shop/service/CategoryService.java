@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import du.shop.dao.CategoryDao;
 import du.shop.entity.Category;
+import du.shop.entity.CategorySecond;
 
 /**
  * 
@@ -25,6 +26,11 @@ public class CategoryService {
 	// 业务层查询所有一级分类的方法
 	public List<Category> findAll() {
 		return categoryDao.findAll();
+	}
+
+	public List<CategorySecond> findSecByCid(Integer cid) {
+		// TODO Auto-generated method stub
+		return categoryDao.findSecByCid(cid);
 	}
 
 }

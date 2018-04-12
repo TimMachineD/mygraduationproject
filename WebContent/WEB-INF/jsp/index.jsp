@@ -13,16 +13,18 @@
     <jsp:include page="head.jsp"></jsp:include>
     <div class="category">
 		<ul>
-			<li>
-				<a href="index.action">首页</a>
-				<img alt="" src="">
-			</li>
 			<s:iterator var="c" value="#session.cList">
 			<li>
-			<a href="#"><s:property value="#c.cname"/></a>
+				<a href="${pageContext.request.contextPath}/index_showSecCategory.action?cid=<s:property value="#c.cid"/>">
+					<s:property value="#c.cname"/>
+				</a>
 			</li>
 			</s:iterator>
 		</ul>
+	</div>
+	<div class="categorySecond">
+		<h1>使用ajax显示二级分类，待做</h1>
+		<img alt="" src="">
 	</div>	
     <div class="newProduct">
     	<div class="productImage">

@@ -70,7 +70,9 @@
 		<!-- 注入Service -->
 		<property name="userService" ref="userService"/>
 	</bean>
-	
+	<bean id="categoryAction" class="du.shop.action.CategoryAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+	</bean>
 	
 	<!-- Service的配置  ===========================-->
 	<bean id="userService" class="du.shop.service.UserService">
