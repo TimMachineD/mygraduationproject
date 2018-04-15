@@ -9,7 +9,7 @@
 <body>
 	<div class=head>
 		<div class=head_left>
-			<a href="#"><img hspace=11 src="images/JD_logo.jpg" vspace=5>
+			<a href="${pageContext.request.contextPath}/index_test.action"><img hspace=11 src="images/JD_logo.jpg" vspace=5>
 			</a>
 		</div>
 		<div class=head_right>

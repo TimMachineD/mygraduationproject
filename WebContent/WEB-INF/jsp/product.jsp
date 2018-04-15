@@ -15,23 +15,11 @@
 
 </head>
 <body>
+<jsp:include page="headtest.jsp"></jsp:include>
 
-<div class="container header">
-	<div class="span5">
-		<div class="logo">
-			<a>
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
-			</a>
-		</div>
-	</div>
-	<div class="span9">
-<div class="headerAd">
-					<img src="image\r___________renleipic_01/header.jpg" alt="正品保障" title="正品保障" height="50" width="320">
-</div>	</div>
 	
 	
-
-</div><div class="container productContent">
+<div class="container productContent">
 		<div class="span6">
 			<div class="hotProductCategory">
 					<s:iterator var="c" value="#session.cList">
@@ -52,6 +40,7 @@
 		</div>
 		
 		<div class="span18 last">
+		
 			
 			<div class="productImage">
 					<a title="" style="outline-style: none; text-decoration: none;" id="zoom" href="http://image/r___________renleipic_01/bigPic1ea8f1c9-8b8e-4262-8ca9-690912434692.jpg" rel="gallery">
@@ -125,55 +114,6 @@
 				
 		</div>
 	</div>
-<div class="container footer">
-	<div class="span24">
-		<div class="footerAd">
-					<img src="image\r___________renleipic_01/footer.jpg" alt="我们的优势" title="我们的优势" height="52" width="950">
-</div>
-</div>
-	<div class="span24">
-		<ul class="bottomNav">
-					<li>
-						<a href="#">关于我们</a>
-						|
-					</li>
-					<li>
-						<a href="#">联系我们</a>
-						|
-					</li>
-					<li>
-						<a href="#">诚聘英才</a>
-						|
-					</li>
-					<li>
-						<a href="#">法律声明</a>
-						|
-					</li>
-					<li>
-						<a>友情链接</a>
-						|
-					</li>
-					<li>
-						<a target="_blank">支付方式</a>
-						|
-					</li>
-					<li>
-						<a target="_blank">配送方式</a>
-						|
-					</li>
-					<li>
-						<a >SHOP++官网</a>
-						|
-					</li>
-					<li>
-						<a>SHOP++论坛</a>
-						
-					</li>
-		</ul>
-	</div>
-	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
-	</div>
-</div>
+<jsp:include page="foot.jsp"></jsp:include>
 </body>
 </html>

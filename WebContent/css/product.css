@@ -308,16 +308,16 @@ div.productList .filter .moreOption {
 	color: #7d7d7d;
 	cursor: pointer;
 	overflow: hidden;
-	background: url(../images/product.gif) -210px -270px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -210px -270px no-repeat;
 }
 
 div.productList .filter dd.close {
-	background: url(../images/product.gif) -210px -300px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -210px -300px no-repeat;
 }
 
 div.productList .filter .moreFilter {
 	line-height: 6px;
-	background: url(../images/product.gif) 0px 0px repeat-x;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px 0px repeat-x;
 }
 
 div.productList .filter .moreFilter a {
@@ -329,11 +329,11 @@ div.productList .filter .moreFilter a {
 	text-align: center;
 	outline: none;
 	blr: expression(this.hideFocus = true);
-	background: url(../images/product.gif) 0px -480px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -480px no-repeat;
 }
 
 div.productList .filter .moreFilter .close {
-	background: url(../images/product.gif) -120px -480px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -120px -480px no-repeat;
 }
 
 div.productList .bar {
@@ -350,7 +350,7 @@ div.productList .bar .layout {
 	line-height: 26px;
 	padding: 8px 0px 8px 8px;
 	border-bottom: dotted 1px #dddddd;
-	background: url(../images/product.gif) 0px -30px repeat-x;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -30px repeat-x;
 }
 
 div.productList .bar .layout label {
@@ -386,19 +386,19 @@ div.productList .bar .layout a span {
 	display: block;
 	margin-right: 0px;
 	text-align: center;
-	background: url(../images/product.gif) 0px -90px repeat-x;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -90px repeat-x;
 }
 
 div.productList .bar .layout a.current span {
-	background: url(../images/product.gif) 0px -120px repeat-x;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -120px repeat-x;
 }
 
 div.productList .bar .layout .tableType span {
-	background: url(../images/product.gif) 0px -510px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -510px no-repeat;
 }
 
 div.productList .bar .layout .listType span {
-	background: url(../images/product.gif) -60px -510px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -60px -510px no-repeat;
 }
 
 div.productList .bar .layout .currentTable {
@@ -406,7 +406,7 @@ div.productList .bar .layout .currentTable {
 }
 
 div.productList .bar .layout .currentTable span {
-	background: url(../images/product.gif) -30px -510px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -30px -510px no-repeat;
 }
 
 div.productList .bar .layout .currentList {
@@ -414,7 +414,7 @@ div.productList .bar .layout .currentList {
 }
 
 div.productList .bar .layout .currentList span {
-	background: url(../images/product.gif) -90px -510px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -90px -510px no-repeat;
 }
 
 div.productList .bar .layout .page {
@@ -454,7 +454,7 @@ div.productList .bar .sort .orderSelect span {
 	display: block;
 	padding: 0px 6px;
 	border: solid 1px #cccccc;
-	background: url(../images/product.gif) right -330px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) right -330px no-repeat;
 }
 
 div.productList .bar .sort .popupMenu {
@@ -507,19 +507,19 @@ div.productList .bar .sort .asc, div.productList .bar .sort .currentAsc, div.pro
 }
 
 div.productList .bar .sort .asc {
-	background: url(../images/product.gif) right -360px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) right -360px no-repeat;
 }
 
 div.productList .bar .sort .currentAsc {
-	background: url(../images/product.gif) right -390px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) right -390px no-repeat;
 }
 
 div.productList .bar .sort .desc {
-	background: url(../images/product.gif) right -420px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) right -420px no-repeat;
 }
 
 div.productList .bar .sort .currentDesc {
-	background: url(../images/product.gif) right -450px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) right -450px no-repeat;
 }
 
 div.productList .bar .sort input {
@@ -688,7 +688,7 @@ div.productContent .productImage .prev {
 	outline: none;
 	blr: expression(this.hideFocus = true);
 	border: 1px solid #e4e4e4;
-	background: url(../images/product.gif) -120px -510px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -120px -510px no-repeat;
 }
 
 div.productContent .productImage .prev:hover {
@@ -704,7 +704,7 @@ div.productContent .productImage .next {
 	outline: none;
 	blr: expression(this.hideFocus = true);
 	border: 1px solid #e4e4e4;
-	background: url(../images/product.gif) -180px -510px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -180px -510px no-repeat;
 }
 
 div.productContent .productImage .next:hover {
@@ -717,11 +717,11 @@ div.productContent .productImage .disabled {
 }
 
 div.productContent .productImage a[class="prev disabled"] {
-	background: url(../images/product.gif) -150px -510px no-repeat #f4f4f4;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -150px -510px no-repeat #f4f4f4;
 }
 
 div.productContent .productImage a[class="next disabled"] {
-	background: url(../images/product.gif) -210px -510px no-repeat #f4f4f4;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -210px -510px no-repeat #f4f4f4;
 }
 
 div.productContent .productImage .scrollable {
@@ -996,7 +996,7 @@ div.productContent .specification a span {
 	right: 0px;
 	bottom: 0px;
 	overflow: hidden;
-	background: url(../images/product.gif) 0px -540px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -540px no-repeat;
 }
 
 div.productContent .specification .text {
@@ -1126,7 +1126,7 @@ div.productContent .quantity .increase {
 	cursor: pointer;
 	overflow: hidden;
 	border: 1px solid #dbdbdb;
-	background: url(../images/product.gif) 0px -570px #f9f9f9 no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -570px #f9f9f9 no-repeat;
 }
 
 div.productContent .quantity .decrease {
@@ -1137,7 +1137,7 @@ div.productContent .quantity .decrease {
 	cursor: pointer;
 	overflow: hidden;
 	border: 1px solid #dbdbdb;
-	background: url(../images/product.gif) -30px -570px #f9f9f9 no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) -30px -570px #f9f9f9 no-repeat;
 }
 
 div.productContent .buy {
@@ -1159,7 +1159,7 @@ div.productContent .buy .addProductNotify {
 	font-family: "Microsoft YaHei";
 	cursor: pointer;
 	border: none;
-	background: url(../images/product.gif) 0px -600px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -600px no-repeat;
 }
 
 div.productContent .buy .addCart {
@@ -1168,13 +1168,12 @@ div.productContent .buy .addCart {
 	line-height: 34px;
 	float: left;
 	padding-left: 20px;
-	color: #ffffff;
 	font-size: 15px;
 	font-weight: bold;
 	font-family: "Microsoft YaHei";
 	cursor: pointer;
 	border: none;
-	background: url(../images/product.gif) 0px -600px no-repeat;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -600px no-repeat;
 }
 
 div.productContent .buy a {
@@ -1193,7 +1192,7 @@ div.productContent .bar ul {
 	height: 32px;
 	padding: 1px 0px;
 	border: 1px solid #dddddd;
-	background: url(../images/product.gif) 0px -150px repeat-x;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -150px repeat-x;
 }
 
 div.productContent .bar li {
@@ -1206,7 +1205,7 @@ div.productContent .bar li {
 }
 
 div.productContent .bar li.current {
-	background: url(../images/product.gif) 0px -210px repeat-x;
+	background: url(${ pageContext.request.contextPath }/images/product.gif) 0px -210px repeat-x;
 }
 
 div.productContent .bar li.current a {

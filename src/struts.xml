@@ -8,11 +8,14 @@
 <constant name="struts.devMode" value="false" />
 
 <package name="default" extends="struts-default" namespace="/">
+	<global-results>
+		<result name="msg">/WEB-INF/jsp/test.jsp</result>
+	</global-results>
 	<!-- 配置首页访问的Action -->
 	<action name="index_*" class="indexAction" method="{1}">
 		<result name="toIndex">/WEB-INF/jsp/index.jsp</result>
-		<result name="toSecCategory">/WEB-INF/jsp/csListTest.jsp</result>
-		<result name="error">/WEB-INF/jsp/success.jsp</result>
+		<result name="toSecCategory">/WEB-INF/jsp/csList.jsp</result>
+		<result name="test">/WEB-INF/jsp/test.jsp</result>
 	</action>
 	<!-- 配置用户模块的Action -->
 	<action name="user_*" class="userAction" method="{1}">
@@ -20,14 +23,29 @@
 		<result name="msg">/WEB-INF/jsp/login.jsp</result>
 		<result name="loginPage">/WEB-INF/jsp/login.jsp</result>
 		<result name="login">/WEB-INF/jsp/login.jsp</result>
-		<result name="loginSuccess" type="redirectAction">index</result>
+		<result name="loginSuccess" type="redirectAction">index_index</result>
 		<result name="quit" type="redirectAction">index</result>
 		<result name="input">/WEB-INF/jsp/regist.jsp</result>
 	</action>
-	<!-- 一级分类的action -->
-	<!-- <action name="category" class="categoryAction">
-		<result name="csList">/WEB-INF/jsp/csList.jsp</result>
+	<!-- 商品模块的Action -->
+	<action name="product_*" class="productAction" method="{1}">
+		<result name="findByPid">/WEB-INF/jsp/product.jsp</result>
+		<result name="findByCsid">/WEB-INF/jsp/productList.jsp</result>
 	</action>
-	-->
+	<!-- 购物车的Action -->
+	<action name="cart_*" class="cartAction" method="{1}">
+		<result name="addCart">/WEB-INF/jsp/cart.jsp</result>
+		<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
+		<result name="removeCart">/WEB-INF/jsp/cart.jsp</result>
+		<result name="myCart">/WEB-INF/jsp/cart.jsp</result>
+	</action>
+	<!-- 订单的Action -->
+	<action name="order_*" class="orderAction" method="{1}">
+		<result name="saveOrder">/WEB-INF/jsp/order.jsp</result>
+		<result name="findByUid">/WEB-INF/jsp/orderList.jsp</result>
+		<result name="findByOid">/WEB-INF/jsp/order.jsp</result>
+		<result name="updateStateSuccess" type="redirectAction">order_findByUid.action?page=1
+		</result>
+	</action>
 </package>
 </struts>

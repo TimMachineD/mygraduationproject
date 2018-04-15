@@ -66,4 +66,7 @@ public class IndexAction extends ActionSupport {
 		ActionContext.getContext().getSession().put("csList", csList);
 		return "toSecCategory";
 	}
+	public String test() {
+		return "test";
+	}
 }

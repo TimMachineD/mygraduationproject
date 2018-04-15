@@ -101,18 +101,7 @@ textarea {
 	display: none;
 }
 
-.clearfix {
-	*zoom: 1;
-}
 
-.clearfix:after {
-	height: 0px;
-	display: block;
-	clear: both;
-	visibility: hidden;
-	overflow: hidden;
-	content: "\0020";
-}
 
 .dialogOverlay {
 	width: 100%;
@@ -170,10 +159,16 @@ div.container .span3 {
 div.container .span4 {
 	width: 150px;
 }
-
+/**logo*/
 div.container .span5 {
-	width: 190px;
+	width: 270px;
 }
+div.header .logo {
+	height: 84px;
+	padding-top: 10px;
+	overflow: hidden;
+}
+
 
 div.container .span6 {
 	width: 230px;
@@ -188,11 +183,60 @@ div.container .span8 {
 }
 
 div.container .span9 {
-	width: 350px;
+	width: 400px;
 }
 
+div.header .headerAd {
+	margin-top:40px;
+	margin-left:60px;
+	height: 40px;
+}
+.searchbtn{
+	background-color:#AA0000;
+	border: none;
+    color: white;
+    padding: 3px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+    width:60px;
+    /*position: relative;
+	left:40px;
+	top:1px;*/
+    
+}
+.searchbtn:hover{
+	background-color:#f44336;
+}
+.searchtext{
+	/*border-color: #AA0000;*/
+	height:24px;
+	width:260px;
+	/*position: relative;
+	left:40px;*/
+}
+
+
 div.container .span10 {
-	width: 390px;
+	width: 260px;
+	font-size: 13px;
+	font-style: "宋体";
+	font-weight: bold;
+}
+div.header .topNav {
+	float: right;
+	
+}
+div.header .topNav  .topNav01{
+	float: left;
+	width:180px;
+}
+div.header .topNav  .topNav02{
+	float: right;
+	width:80px;
 }
 
 div.container .span11 {
@@ -251,6 +295,12 @@ div.container .span24 {
 	width: 950px;
 	margin-right: 0px;
 }
+div.index .maintable {
+	margin-top:20px;
+	height: 300px;
+	border:1px solid #626262;  
+}
+
 
 div.container .prepend1 {
 	padding-left: 40px;
@@ -768,34 +818,15 @@ div.path li.last {
 
 /* ---------- Header ---------- */
 
-div.header .logo {
-	height: 50px;
-	padding-top: 10px;
-	overflow: hidden;
-}
 
-div.header .headerAd {
-	height: 60px;
-}
 
-div.header .topNav ul {
-	float: right;
-}
 
-div.header .topNav li {
-	line-height: 30px;
-	float: left;
-}
-
-div.header .topNav li a {
-	margin: 0px 6px;
-}
 
 div.header .headerLogin, div.header .headerRegister, div.header .headerUsername, div.header .headerLogout {
 	display: none;
 }
 
-div.header .cart {
+/*div.header .cart {
 	width: 60px;
 	height: 28px;
 	line-height: 28px;
@@ -805,9 +836,9 @@ div.header .cart {
 	margin-left: 80px;
 	margin-bottom: 4px;
 	background: url(../images/common.gif) -210px -180px no-repeat;
-}
+}*/
 
-div.header .phone {
+/*div.header .phone {
 	height: 28px;
 	line-height: 28px;
 	float: right;
@@ -821,7 +852,7 @@ div.header .phone {
 div.header .phone strong {
 	font-size: 14px;
 	font-weight: bold;
-}
+}*/
 
 div.header .mainNav {
 	height: 36px;

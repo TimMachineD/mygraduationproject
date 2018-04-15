@@ -6,11 +6,10 @@
   <head>
     <title>Õ¯…œ…Ã≥«</title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/product.css">
   </head>
   
   <body>
-    <jsp:include page="head.jsp"></jsp:include>
+    <jsp:include page="headtest.jsp"></jsp:include>
     <div class="category">
 		
 	</div>
@@ -18,13 +17,12 @@
 		<ul>
 			<s:iterator var="cs" value="#session.csList">
 			 	<li>
-			 		<a href="index_index.action">
-			 			<s:property value="#cs.csname"/>
-			 		</a>
+			 		<a href="${ pageContext.request.contextPath }/product_findByCsid.action?csid=<s:property value="#cs.csid"/>&page=1">
+			 		<s:property value="#cs.csname"/></a>
 			 	</li>
 			</s:iterator>
-		</ul>
-	</div>	
-	
+		</ul>	
+	</div>
+	 <jsp:include page="foot.jsp"></jsp:include>
   </body>
 </html>

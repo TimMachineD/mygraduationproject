@@ -9,7 +9,7 @@
   </head>
   
   <body>
-    <jsp:include page="head.jsp"></jsp:include>
+    <jsp:include page="headtest.jsp"></jsp:include>
     
     	<div class=info_bk1>
 					<div align="center">

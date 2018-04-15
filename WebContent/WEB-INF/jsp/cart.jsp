@@ -14,22 +14,9 @@
 
 </head>
 <body>
-<div class="container header">
-	<div class="span5">
-		<div class="logo">
-			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
-			</a>
-		</div>
-	</div>
-	<div class="span9">
-<div class="headerAd">
-					<img src="${pageContext.request.contextPath}/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
-</div>	</div>
+<jsp:include page="headtest.jsp"></jsp:include>
 	
-	
-	
-</div>	<div class="container cart">
+<div class="container cart">
 		<s:if test="#session.cart.cartItems.size() != 0">
 		<div class="span24">
 			<div class="step step1">
@@ -72,11 +59,7 @@
 				<dl id="giftItems" class="hidden" style="display: none;">
 				</dl>
 				<div class="total">
-					<em id="promotion"></em>
-							<em>
-								登录后确认是否享有优惠
-							</em>
-					赠送积分: <em id="effectivePoint"><s:property value="#session.cart.total"/></em>
+					
 					商品金额: <strong id="effectivePrice">￥<s:property value="#session.cart.total"/>元</strong>
 				</div>
 				<div class="bottom">
@@ -94,53 +77,5 @@
 			</div>
 		</s:else>
 	</div>
-<div class="container footer">
-	<div class="span24">
-		<div class="footerAd">
-					<img src="${pageContext.request.contextPath}/image/footer.jpg" width="950" height="52" alt="我们的优势" title="我们的优势">
-</div>	</div>
-	<div class="span24">
-		<ul class="bottomNav">
-				<li>
-						<a >关于我们</a>
-						|
-					</li>
-					<li>
-						<a>联系我们</a>
-						|
-					</li>
-					<li>
-						<a>招贤纳士</a>
-						|
-					</li>
-					<li>
-						<a>法律声明</a>
-						|
-					</li>
-					<li>
-						<a>友情链接</a>
-						|
-					</li>
-					<li>
-						<a target="_blank">支付方式</a>
-						|
-					</li>
-					<li>
-						<a  target="_blank">配送方式</a>
-						|
-					</li>
-					<li>
-						<a>服务声明</a>
-						|
-					</li>
-					<li>
-						<a>广告声明</a>
-						
-					</li>
-		</ul>
-	</div>
-	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
-	</div>
-</div>
+	<jsp:include page="foot.jsp"></jsp:include>
 </body></html>

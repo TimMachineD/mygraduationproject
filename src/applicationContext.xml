@@ -45,6 +45,8 @@
 				<value>du/shop/entity/Category.hbm.xml</value>
 				<value>du/shop/entity/CategorySecond.hbm.xml</value>
 				<value>du/shop/entity/Product.hbm.xml</value>
+				<value>du/shop/entity/OrderItem.hbm.xml</value>
+				<value>du/shop/entity/Order.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -73,18 +75,31 @@
 	<bean id="categoryAction" class="du.shop.action.CategoryAction" scope="prototype">
 		<property name="categoryService" ref="categoryService"/>
 	</bean>
-	
+	<!-- 商品模块的Action -->
+	<bean id="productAction" class="du.shop.action.ProductAction" scope="prototype">
+		<property name="productService" ref="productService"/>
+	</bean>
+	<!-- 购物车的Action -->
+	<bean id="cartAction" class="du.shop.action.CartAction" scope="prototype">
+		<property name="productService" ref="productService"/>
+	</bean>
+	<!-- 配置OrderAction -->
+	<bean id="orderAction" class="du.shop.action.OrderAction" scope="prototype">
+		<property name="orderService" ref="orderService"/>
+	</bean>
 	<!-- Service的配置  ===========================-->
 	<bean id="userService" class="du.shop.service.UserService">
 		<property name="userDao" ref="userDao"/>
 	</bean>
-	<!-- <bean id="productService" class="du.shop.service.ProductService">
+	<bean id="productService" class="du.shop.service.ProductService">
 		<property name="productDao" ref="productDao"/>
-	</bean> -->
+	</bean>
 	<bean id="categoryService" class="du.shop.service.CategoryService">
 		<property name="categoryDao" ref="categoryDao"/>
 	</bean>
-	
+	<bean id="orderService" class="du.shop.service.OrderService">
+		<property name="orderDao" ref="orderDao"/>
+	</bean>
 	<!-- Dao的配置  ===========================-->
 	<bean id="userDao" class="du.shop.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
@@ -92,5 +107,10 @@
 	<bean id="categoryDao" class="du.shop.dao.CategoryDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>	
-	
+	<bean id="productDao" class="du.shop.dao.ProductDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="orderDao" class="du.shop.dao.OrderDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 </beans>
