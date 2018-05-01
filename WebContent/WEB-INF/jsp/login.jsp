@@ -10,9 +10,10 @@
   
   <body>
     <jsp:include page="headtest.jsp"></jsp:include>
-    
-    	<div class=info_bk1>
-					<div align="center">
+    <div class="container index">
+		<div class="span24">
+			<div id="maintable" class="maintable clearfix">
+				<div align="center">
 						<form action="${pageContext.request.contextPath}/user_login.action" method="post" name="login">
 							<table>
 								<tr>
@@ -28,8 +29,10 @@
 							</table>
 						</form>
 					</div>
-				</div>
-    
+			</div>
+			</div>
+			</div>
+    	
 	<jsp:include page="foot.jsp"></jsp:include>
   </body>
 </html>

@@ -2,55 +2,90 @@ package du.shop.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import du.shop.entity.Order;
 import du.shop.entity.User;
 
-
 /**
- * ÓÃ»§Ä£¿é³Ö¾Ã²ã´úÂë:
- * @author ¶ÅÔÆ·É
+ * ï¿½Ã»ï¿½Ä£ï¿½ï¿½Ö¾Ã²ï¿½ï¿½ï¿½ï¿½:
+ * 
+ * @author ï¿½ï¿½ï¿½Æ·ï¿½
  *
  */
-public class UserDao extends HibernateDaoSupport{
+public class UserDao extends HibernateDaoSupport {
 
-	// °´Ãû´Î²éÑ¯ÊÇ·ñÓÐ¸ÃÓÃ»§:
-		public User findByUsername(String username){
-			String hql = "from User where username = ?";
-			List<User> list = this.getHibernateTemplate().find(hql, username);
-			if(list != null && list.size() > 0){
-				return list.get(0);
-			}
-			return null;
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Î²ï¿½Ñ¯ï¿½Ç·ï¿½ï¿½Ð¸ï¿½ï¿½Ã»ï¿½:
+	public User findByUsername(String username) {
+		String hql = "from User where username = ?";
+		List<User> list = this.getHibernateTemplate().find(hql, username);
+		if (list != null && list.size() > 0) {
+			return list.get(0);
 		}
-		
-		// ×¢²áÓÃ»§´æÈëÊý¾Ý¿â´úÂëÊµÏÖ
-		public void save(User user) {
-			this.getHibernateTemplate().save(user);
-		}
+		return null;
+	}
 
-		// ¸ù¾Ý¼¤»îÂë²éÑ¯ÓÃ»§
-		public User findByCode(String code) {
-			String hql = "from User where code = ?";
-			List<User> list = this.getHibernateTemplate().find(hql,code);
-			if(list != null && list.size() > 0){
-				return list.get(0);
-			}
-			return null;
-		}
-		
-		// ÐÞ¸ÄÓÃ»§×´Ì¬µÄ·½·¨
-		public void update(User existUser) {
-			this.getHibernateTemplate().update(existUser);
-		}
+	// ×¢ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
+	public void save(User user) {
+		this.getHibernateTemplate().save(user);
+	}
 
-		// ÓÃ»§µÇÂ¼µÄ·½·¨
-		public User login(User user) {
-			String hql = "from User where username = ? and password = ? and state = ?";
-			List<User> list = this.getHibernateTemplate().find(hql, user.getUsername(),user.getPassword(),1);
-			if(list != null && list.size() > 0){
-				return list.get(0);
-			}
-			return null;
+	// ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
+	public User findByCode(String code) {
+		String hql = "from User where code = ?";
+		List<User> list = this.getHibernateTemplate().find(hql, code);
+		if (list != null && list.size() > 0) {
+			return list.get(0);
 		}
+		return null;
+	}
+
+	// ï¿½Þ¸ï¿½ï¿½Ã»ï¿½×´Ì¬ï¿½Ä·ï¿½ï¿½ï¿½
+	public void update(User existUser) {
+		this.getHibernateTemplate().update(existUser);
+	}
+
+	// ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½Ä·ï¿½ï¿½ï¿½
+	public User login(User user) {
+		String hql = "from User where username = ? and password = ? and state = ?";
+		List<User> list = this.getHibernateTemplate().find(hql, user.getUsername(), user.getPassword(), 1);
+		if (list != null && list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
+
+	public int findCount() {
+		String hql = "select count(*) from User";
+		List<Long> list = this.getHibernateTemplate().find(hql);
+		if (list != null && list.size() > 0) {
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+
+	public List<User> findByPage(int begin, int limit) {
+		String hql = "from User";
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+
+		query.setFirstResult(begin);
+		query.setMaxResults(limit);
+		@SuppressWarnings("unchecked")
+		List<User> list = query.list();
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		return null;
+	}
+
+	public User findByUid(Integer uid) {
+		return this.getHibernateTemplate().get(User.class, uid);
+	}
+
+	public void delete(User existUser) {
+		this.getHibernateTemplate().delete(existUser);
+	}
 }

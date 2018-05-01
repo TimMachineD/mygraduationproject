@@ -5,7 +5,7 @@
 <html>
   <head>
 	<title>注册页</title>
-	<link rel="stylesheet" type="text/css" href="css/regist.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 <script type="text/javascript">
 	function checkForm() {
 		// 校验用户名:
@@ -80,7 +80,10 @@
 </head>
 	<body>
 		<!--导入head.jsp-->
-		<jsp:include page="head.jsp"></jsp:include>
+		<jsp:include page="headtest.jsp"></jsp:include>
+		<div class="container index">
+		<div class="span24">
+			<div id="maintable" class="maintable clearfix">
 				<form class="registerForm" id="registerForm" action="${ pageContext.request.contextPath }/user_regist.action"  method="post" novalidate="novalidate" onsubmit="return checkForm();">
 					<table>
 						<tr>
@@ -104,6 +107,10 @@
 							<td><input type="submit" value="注册">
 					</table>
 				</form>
+			</div>
+			</div>
+			</div>
+				
 		<jsp:include page="foot.jsp"></jsp:include>
 	</body>
 </html>

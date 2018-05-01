@@ -9,12 +9,12 @@ import du.shop.entity.Product;
 import du.shop.util.PageBean;
 /**
  * 
- * @author ¶ÅÔÆ·É
+ * @author ï¿½ï¿½ï¿½Æ·ï¿½
  *
  */
 @Transactional
 public class ProductService {
-	// ×¢ÈëProductDao
+	// ×¢ï¿½ï¿½ProductDao
 		private ProductDao productDao;
 
 		public void setProductDao(ProductDao productDao) {
@@ -22,31 +22,31 @@ public class ProductService {
 		}
 
 	
-		// Ê×Ò³ÉÏ×îÐÂÉÌÆ·µÄ²éÑ¯
+		// ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Ä²ï¿½Ñ¯
 		public List<Product> findNew() {
 			return productDao.findNew();
 		}
 
-		// ¸ù¾ÝÉÌÆ·ID²éÑ¯ÉÌÆ·
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·IDï¿½ï¿½Ñ¯ï¿½ï¿½Æ·
 		public Product findByPid(Integer pid) {
 			return productDao.findByPid(pid);
 		}
 
 		
 
-		// ¸ù¾Ý¶þ¼¶·ÖÀà²éÑ¯ÉÌÆ·ÐÅÏ¢
+		// ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Æ·ï¿½ï¿½Ï¢
 		public PageBean<Product> findByPageCsid(Integer csid, int page) {
 			PageBean<Product> pageBean = new PageBean<Product>();
-			// ÉèÖÃµ±Ç°Ò³Êý:
+			// ï¿½ï¿½ï¿½Ãµï¿½Ç°Ò³ï¿½ï¿½:
 			pageBean.setPage(page);
-			// ÉèÖÃÃ¿Ò³ÏÔÊ¾¼ÇÂ¼Êý:
+			// ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½Â¼ï¿½ï¿½:
 			int limit = 8;
 			pageBean.setLimit(limit);
-			// ÉèÖÃ×Ü¼ÇÂ¼Êý:
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½:
 			int totalCount = 0;
 			totalCount = productDao.findCountCsid(csid);
 			pageBean.setTotalCount(totalCount);
-			// ÉèÖÃ×ÜÒ³Êý:
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½:
 			int totalPage = 0;
 			// Math.ceil(totalCount / limit);
 			if (totalCount % limit == 0) {
@@ -55,27 +55,27 @@ public class ProductService {
 				totalPage = totalCount / limit + 1;
 			}
 			pageBean.setTotalPage(totalPage);
-			// Ã¿Ò³ÏÔÊ¾µÄÊý¾Ý¼¯ºÏ:
-			// ´ÓÄÄ¿ªÊ¼:
+			// Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½:
+			// ï¿½ï¿½ï¿½Ä¿ï¿½Ê¼:
 			int begin = (page - 1) * limit;
 			List<Product> list = productDao.findByPageCsid(csid, begin, limit);
 			pageBean.setList(list);
 			return pageBean;
 		}
 
-		// ºóÌ¨²éÑ¯ËùÓÐÉÌÆ·´ø·ÖÒ³
-		/*public PageBean<Product> findByPage(Integer page) {
+		// ï¿½ï¿½Ì¨ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½Ò³
+		public PageBean<Product> findByPage(Integer page) {
 			PageBean<Product> pageBean = new PageBean<Product>();
-			// ÉèÖÃµ±Ç°Ò³Êý:
+			// ï¿½ï¿½ï¿½Ãµï¿½Ç°Ò³ï¿½ï¿½:
 			pageBean.setPage(page);
-			// ÉèÖÃÃ¿Ò³ÏÔÊ¾¼ÇÂ¼Êý:
+			// ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½Â¼ï¿½ï¿½:
 			int limit = 10;
 			pageBean.setLimit(limit);
-			// ÉèÖÃ×Ü¼ÇÂ¼Êý:
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½:
 			int totalCount = 0;
 			totalCount = productDao.findCount();
 			pageBean.setTotalCount(totalCount);
-			// ÉèÖÃ×ÜÒ³Êý:
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½:
 			int totalPage = 0;
 			// Math.ceil(totalCount / limit);
 			if (totalCount % limit == 0) {
@@ -84,25 +84,25 @@ public class ProductService {
 				totalPage = totalCount / limit + 1;
 			}
 			pageBean.setTotalPage(totalPage);
-			// Ã¿Ò³ÏÔÊ¾µÄÊý¾Ý¼¯ºÏ:
-			// ´ÓÄÄ¿ªÊ¼:
+			// Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½:
+			// ï¿½ï¿½ï¿½Ä¿ï¿½Ê¼:
 			int begin = (page - 1) * limit;
 			List<Product> list = productDao.findByPage(begin, limit);
 			pageBean.setList(list);
 			return pageBean;
-		}*/
+		}
 
-		// ÒµÎñ²ã±£´æÉÌÆ··½·¨:
+		// Òµï¿½ï¿½ã±£ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½:
 		public void save(Product product) {
 			productDao.save(product);
 		}
 
-		// ÒµÎñ²ãÉ¾³ýÉÌÆ·
+		// Òµï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Æ·
 		public void delete(Product product) {
 			productDao.delete(product);
 		}
 
-		// ÒµÎñ²ãÐÞ¸ÄÉÌÆ·µÄ·½·¨
+		// Òµï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½Æ·ï¿½Ä·ï¿½ï¿½ï¿½
 		public void update(Product product) {
 			productDao.update(product);
 		}

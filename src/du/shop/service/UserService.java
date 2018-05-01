@@ -1,22 +1,25 @@
 package du.shop.service;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import du.shop.dao.UserDao;
 import du.shop.entity.User;
 import du.shop.util.MailThread;
 import du.shop.util.MailUtils;
+import du.shop.util.PageBean;
 import du.shop.util.UUIDUtils;
 
 
 /**
- * ÓÃ»§ÃûÄ£¿éÒµÎñ²ã´úÂë
- * @author ¶ÅÔÆ·É
+ * ï¿½Ã»ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @author ï¿½ï¿½ï¿½Æ·ï¿½
  *
  */
 @Transactional
 public class UserService {
-	// ×¢ÈëUserDao
+	// ×¢ï¿½ï¿½UserDao
 		private UserDao userDao;
 
 		public void setUserDao(UserDao userDao) {
@@ -24,36 +27,73 @@ public class UserService {
 		}
 		
 		
-		// °´ÓÃ»§Ãû²éÑ¯ÓÃ»§µÄ·½·¨:
+		// ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½Ä·ï¿½ï¿½ï¿½:
 		public User findByUsername(String username){
 			return userDao.findByUsername(username);
 		}
 
-		// ÒµÎñ²ãÍê³ÉÓÃ»§×¢²á´úÂë:
+		// Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½:
 		public void save(User user) {
-			// ½«Êı¾İ´æÈëµ½Êı¾İ¿â
-			user.setState(0); // 0:´ú±íÓÃ»§Î´¼¤»î.  1:´ú±íÓÃ»§ÒÑ¾­¼¤»î.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½İ´ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½İ¿ï¿½
+			user.setState(0); // 0:ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Î´ï¿½ï¿½ï¿½ï¿½.  1:ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½.
 			String code = UUIDUtils.getUUID()+UUIDUtils.getUUID();
 			user.setCode(code);
 			userDao.save(user);
-			// ·¢ËÍ¼¤»îÓÊ¼ş;
+			// ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½;
 			//MailUtils.sendMail(user.getEmail(), code);
 			MailThread mailThread = new MailThread(user.getEmail(), code);
 			mailThread.start();
 		}
 
-		// ÒµÎñ²ã¸ù¾İ¼¤»îÂë²éÑ¯ÓÃ»§
+		// Òµï¿½ï¿½ï¿½ï¿½ï¿½İ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
 		public User findByCode(String code) {
 			return userDao.findByCode(code);
 		}
 
-		// ĞŞ¸ÄÓÃ»§µÄ×´Ì¬µÄ·½·¨
+		// ï¿½Ş¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½×´Ì¬ï¿½Ä·ï¿½ï¿½ï¿½
 		public void update(User existUser) {
 			userDao.update(existUser);
 		}
 
-		// ÓÃ»§µÇÂ¼µÄ·½·¨
+		// ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½Ä·ï¿½ï¿½ï¿½
 		public User login(User user) {
 			return userDao.login(user);
+		}
+		// ä¸šåŠ¡å±‚ç”¨æˆ·æŸ¥è¯¢æ‰€æœ‰
+		public PageBean<User> findByPage(Integer page) {
+			PageBean<User> pageBean = new PageBean<User>();
+			// è®¾ç½®å½“å‰é¡µæ•°:
+			pageBean.setPage(page);
+			// è®¾ç½®æ¯é¡µæ˜¾ç¤ºè®°å½•æ•°:
+			// æ˜¾ç¤º5ä¸ª
+			int limit = 5;
+			pageBean.setLimit(limit);
+			// è®¾ç½®æ€»è®°å½•æ•°:
+			int totalCount = 0;
+			totalCount = userDao.findCount();
+			pageBean.setTotalCount(totalCount);
+			// è®¾ç½®æ€»é¡µæ•°
+			int totalPage = 0;
+			if(totalCount % limit == 0){
+				totalPage = totalCount / limit;
+			}else{
+				totalPage = totalCount / limit + 1;
+			}
+			pageBean.setTotalPage(totalPage);
+			// è®¾ç½®æ¯é¡µæ˜¾ç¤ºæ•°æ®é›†åˆ:
+			int begin = (page - 1)*limit;
+			List<User> list = userDao.findByPage(begin,limit);
+			pageBean.setList(list);
+			return pageBean;
+		}
+
+
+		public User findByUid(Integer uid) {
+			return userDao.findByUid(uid);
+		}
+
+
+		public void delete(User existUser) {
+			userDao.delete(existUser);
 		}
 }

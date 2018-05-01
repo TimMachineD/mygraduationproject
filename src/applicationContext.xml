@@ -47,6 +47,7 @@
 				<value>du/shop/entity/Product.hbm.xml</value>
 				<value>du/shop/entity/OrderItem.hbm.xml</value>
 				<value>du/shop/entity/Order.hbm.xml</value>
+				<value>du/shop/entity/AdminUser.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -65,7 +66,7 @@
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="du.shop.index.IndexAction" scope="prototype">
 		<property name="categoryService" ref="categoryService"/>
-		<!-- <property name="productService" ref="productService"/> -->
+		<property name="productService" ref="productService"/>
 	</bean>
 	<!-- 用户模块的Action -->
 	<bean id="userAction" class="du.shop.action.UserAction" scope="prototype">
@@ -87,6 +88,32 @@
 	<bean id="orderAction" class="du.shop.action.OrderAction" scope="prototype">
 		<property name="orderService" ref="orderService"/>
 	</bean>
+	<!-- 配置后台登录的Action -->
+	<bean id="adminUserAction" class="du.shop.action.AdminUserAction" scope="prototype">
+		<property name="adminUserService" ref="adminUserService"/>
+	</bean>
+	<!-- 配置后台一级管理的Action -->
+	<bean id="adminCategoryAction" class="du.shop.action.AdminCategoryAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+	</bean>
+	<!-- 配置后台二级分类管理的Action -->
+	<bean id="adminCategorySecondAction" class="du.shop.action.AdminCategorySecondAction" scope="prototype">
+		<property name="categorySecondService" ref="categorySecondService"/>
+		<property name="categoryService" ref="categoryService"/>
+	</bean>
+	<!-- 配置后台商品管理的Action -->
+	<bean id="adminProductAction" class="du.shop.action.AdminProductAction" scope="prototype">
+		<property name="productService" ref="productService"/>
+		<property name="categorySecondService" ref="categorySecondService"/>
+	</bean>
+	<!-- 配置后台用户管理的Action -->
+	<bean id="userAdminAction" class="du.shop.action.UserAdminAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	<!-- 配置后台订单管理的Action -->
+	<bean id="adminOrderAction" class="du.shop.action.AdminOrderAction" scope="prototype">
+		<property name="orderService" ref="orderService"/>
+	</bean>
 	<!-- Service的配置  ===========================-->
 	<bean id="userService" class="du.shop.service.UserService">
 		<property name="userDao" ref="userDao"/>
@@ -100,6 +127,12 @@
 	<bean id="orderService" class="du.shop.service.OrderService">
 		<property name="orderDao" ref="orderDao"/>
 	</bean>
+	<bean id="categorySecondService" class="du.shop.service.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao"/>
+	</bean>
+	<bean id="adminUserService" class="du.shop.service.AdminUserService">
+		<property name="adminUserDao" ref="adminUserDao"/>
+	</bean>
 	<!-- Dao的配置  ===========================-->
 	<bean id="userDao" class="du.shop.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
@@ -111,6 +144,12 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="orderDao" class="du.shop.dao.OrderDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="categorySecondDao" class="du.shop.dao.CategorySecondDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="adminUserDao" class="du.shop.dao.AdminUserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 </beans>

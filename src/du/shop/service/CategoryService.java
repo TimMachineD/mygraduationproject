@@ -10,24 +10,50 @@ import du.shop.entity.CategorySecond;
 
 /**
  * 
- * @author ���Ʒ�
+ * @author ���Ʒ�
  *
  */
 
 @Transactional
 public class CategoryService {
-	// ע��CategoryDao
+	// 注入CategoryDao
 	private CategoryDao categoryDao;
 
 	public void setCategoryDao(CategoryDao categoryDao) {
 		this.categoryDao = categoryDao;
 	}
 
-	// ҵ����ѯ����һ������ķ���
+	// 业务层查询所有一级分类的方法
 	public List<Category> findAll() {
 		return categoryDao.findAll();
 	}
 
+	// 业务层保存一级分类的操作
+	public void save(Category category) {
+		categoryDao.save(category);
+	}
+
+	// 业务层根据一级分类id查询一级分类
+	public Category findByCid(Integer cid) {
+		return categoryDao.findByCid(cid);
+	}
+
+	// 业务层删除一级分类
+	public void delete(Category category) {
+		categoryDao.delete(category);
+	}
+
+	// 业务层修改一级分类
+	public void update(Category category) {
+		categoryDao.update(category);
+	}
+	
+	/**
+	 * 根据为一级分类查到二级分类，用ajax实现显示
+	 * @param cid
+	 * @return 二级分类列表
+	 * 
+	 */
 	public List<CategorySecond> findSecByCid(Integer cid) {
 		// TODO Auto-generated method stub
 		return categoryDao.findSecByCid(cid);

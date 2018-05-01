@@ -16,12 +16,12 @@ import du.shop.entity.OrderItem;
  */
 public class OrderDao extends HibernateDaoSupport {
 
-	// Dao²ãµÄ±£´æ¶©µ¥¶î²Ù×÷
+	// Daoï¿½ï¿½Ä±ï¿½ï¿½æ¶©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void save(Order order) {
 		this.getHibernateTemplate().save(order);
 	}
 
-	// Dao²ã²éÑ¯ÎÒµÄ¶©µ¥·ÖÒ³²éÑ¯:Í³¼Æ¸öÊı
+	// Daoï¿½ï¿½ï¿½Ñ¯ï¿½ÒµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯:Í³ï¿½Æ¸ï¿½ï¿½ï¿½
 	public int findCountByUid(Integer uid) {
 		String hql = "select count(*) from Order o where o.user.uid = ?";
 		List<Long> list = this.getHibernateTemplate().find(hql, uid);
@@ -31,10 +31,10 @@ public class OrderDao extends HibernateDaoSupport {
 		return 0;
 	}
 
-	// Dao²ã²éÑ¯ÎÒµÄ¶©µ¥·ÖÒ³²éÑ¯:²éÑ¯Êı¾İ
+	// Daoï¿½ï¿½ï¿½Ñ¯ï¿½ÒµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯:ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	public List<Order> findPageByUid(Integer uid, Integer begin, Integer limit) {
 		String hql = "from Order o where o.user.uid = ? order by ordertime desc";
-		// ·ÖÒ³µÄÁíÒ»ÖÖĞ´·¨
+		// ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ğ´ï¿½ï¿½
 		Session session = getSession();
 		Query query = session.createQuery(hql);
 
@@ -45,21 +45,21 @@ public class OrderDao extends HibernateDaoSupport {
 		List<Order> list = query.list();
 		if (list != null && list.size() > 0) {
 			return list;
-		} 
+		}
 		return null;
 	}
 
-	// DAO²ã¸ù¾İ¶©µ¥id²éÑ¯¶©µ¥
+	// DAOï¿½ï¿½ï¿½ï¿½İ¶ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	public Order findByOid(Integer oid) {
 		return this.getHibernateTemplate().get(Order.class, oid);
 	}
 
-	// DAO²ãĞŞ¸Ä¶©µ¥µÄ·½·¨:
+	// DAOï¿½ï¿½ï¿½Ş¸Ä¶ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½:
 	public void update(Order currOrder) {
 		this.getHibernateTemplate().update(currOrder);
 	}
 
-	// DAOÖĞÍ³¼Æ¶©µ¥¸öÊıµÄ·½·¨
+	// DAOï¿½ï¿½Í³ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	public int findCount() {
 		String hql = "select count(*) from Order";
 		List<Long> list = this.getHibernateTemplate().find(hql);
@@ -69,11 +69,11 @@ public class OrderDao extends HibernateDaoSupport {
 		return 0;
 	}
 
-	// DAOÖĞ·ÖÒ³²éÑ¯¶©µ¥µÄ·½·¨
+	// DAOï¿½Ğ·ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	public List<Order> findByPage(int begin, int limit) {
 		String hql = "from Order order by ordertime desc";
 
-		// ·ÖÒ³µÄÁíÒ»ÖÖĞ´·¨
+		// ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ğ´ï¿½ï¿½
 		Session session = getSession();
 		Query query = session.createQuery(hql);
 
@@ -83,14 +83,46 @@ public class OrderDao extends HibernateDaoSupport {
 		List<Order> list = query.list();
 		if (list != null && list.size() > 0) {
 			return list;
-		} 
+		}
 		return null;
 	}
 
-	// DAoÖĞ¸ù¾İ¶©µ¥id²éÑ¯¶©µ¥Ïî
+	// DAoï¿½Ğ¸ï¿½ï¿½İ¶ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<OrderItem> findOrderItem(Integer oid) {
 		String hql = "from OrderItem oi where oi.order.oid = ?";
 		List<OrderItem> list = this.getHibernateTemplate().find(hql, oid);
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+		return null;
+	}
+
+	// ç»Ÿè®¡è®¢å•ä¸ªæ•°
+	public Integer findByCount() {
+		String hql = "select count(*) from Order";
+
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+
+		// æ•°å­—æ³›å‹ä¸ºlong
+		List<Long> list = query.list();
+		if (list != null && list.size() > 0) {
+			return list.get(0).intValue();
+		} else {
+			return 0;
+		}
+	}
+
+	public List<Order> findByStatePage(Integer state, Integer begin, Integer limit) {
+		String hql = "from Order o where o.state = ? order by ordertime desc";
+		// åˆ†é¡µçš„å¦ä¸€ç§å†™æ³•
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+		query.setParameter(0, state);
+		query.setFirstResult(begin);
+		query.setMaxResults(limit);
+		@SuppressWarnings("unchecked")
+		List<Order> list = query.list();
 		if (list != null && list.size() > 0) {
 			return list;
 		}

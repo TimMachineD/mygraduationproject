@@ -12,39 +12,39 @@ import du.shop.entity.Product;
 
 /**
  * 
- * @author ¶ÅÔÆ·É
+ * @author ï¿½ï¿½ï¿½Æ·ï¿½
  *
  */
 public class ProductDao extends HibernateDaoSupport {
 	/*public List<Product> findHot() {
-		// Ê¹ÓÃÀëÏßÌõ¼þ²éÑ¯.
+		// Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯.
 		DetachedCriteria criteria = DetachedCriteria.forClass(Product.class);
-		// ²éÑ¯ÈÈÃÅµÄÉÌÆ·,Ìõ¼þ¾ÍÊÇis_host = 1
+		// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Åµï¿½ï¿½ï¿½Æ·,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½is_host = 1
 		criteria.add(Restrictions.eq("is_hot", 1));
-		// µ¹ÐòÅÅÐòÊä³ö:
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:
 		criteria.addOrder(Order.desc("pdate"));
-		// Ö´ÐÐ²éÑ¯:
+		// Ö´ï¿½Ð²ï¿½Ñ¯:
 		List<Product> list = this.getHibernateTemplate().findByCriteria(criteria, 0, 10);
 		return list;
 	}*/
 
-	// Ê×Ò³ÉÏ×îÐÂÉÌÆ·µÄ²éÑ¯
+	// ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Ä²ï¿½Ñ¯
 	public List<Product> findNew() {
-		// Ê¹ÓÃÀëÏßÌõ¼þ²éÑ¯:
+		// Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯:
 		DetachedCriteria criteria = DetachedCriteria.forClass(Product.class);
-		// °´ÈÕÆÚ½øÐÐµ¹ÐòÅÅÐò:
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:
 		criteria.addOrder(Order.desc("pdate"));
-		// Ö´ÐÐ²éÑ¯:
+		// Ö´ï¿½Ð²ï¿½Ñ¯:
 		List<Product> list = this.getHibernateTemplate().findByCriteria(criteria, 0, 10);
 		return list;
 	}
 
-	// ¸ù¾ÝÉÌÆ·ID²éÑ¯ÉÌÆ·
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·IDï¿½ï¿½Ñ¯ï¿½ï¿½Æ·
 	public Product findByPid(Integer pid) {
 		return this.getHibernateTemplate().get(Product.class, pid);
 	}
 
-	// ¸ù¾Ý·ÖÀàid²éÑ¯ÉÌÆ·µÄ¸öÊý
+	// ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½Æ·ï¿½Ä¸ï¿½ï¿½ï¿½
 	/*
 	 * public int findCountCid(Integer cid) { String hql =
 	 * "select count(*) from Product p where p.categorySecond.category.cid = ?";
@@ -52,7 +52,7 @@ public class ProductDao extends HibernateDaoSupport {
 	 * && list.size() > 0){ return list.get(0).intValue(); } return 0; }
 	 */
 
-	// ¸ù¾Ý·ÖÀàid²éÑ¯ÉÌÆ·µÄ¼¯ºÏ
+	// ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½Æ·ï¿½Ä¼ï¿½ï¿½ï¿½
 	/*
 	 * public List<Product> findByPageCid(Integer cid, int begin, int limit) { //
 	 * select p.* from category c,categorysecond cs,product p where c.cid = cs.cid
@@ -60,14 +60,14 @@ public class ProductDao extends HibernateDaoSupport {
 	 * cs,Product p where c.cid = cs.category.cid and cs.csid =
 	 * p.categorySecond.csid and c.cid = ? String hql =
 	 * "select p from Product p join p.categorySecond cs join cs.category c where c.cid = ?"
-	 * ; // ·ÖÒ³ÁíÒ»ÖÖÐ´·¨: List<Product> list = this.getHibernateTemplate().execute(new
+	 * ; // ï¿½ï¿½Ò³ï¿½ï¿½Ò»ï¿½ï¿½Ð´ï¿½ï¿½: List<Product> list = this.getHibernateTemplate().execute(new
 	 * PageHibernateCallback<Product>(hql, new Object[]{cid}, begin, limit));
 	 * if(list != null && list.size() > 0){ return list; } return null;
 	 * 
 	 * }
 	 */
 
-	// ¸ù¾Ý¶þ¼¶·ÖÀà²éÑ¯ÉÌÆ·¸öÊý
+	// ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	public int findCountCsid(Integer csid) {
 		String hql = "select count(*) from Product p where p.categorySecond.csid = ?";
 		List<Long> list = this.getHibernateTemplate().find(hql, csid);
@@ -77,10 +77,10 @@ public class ProductDao extends HibernateDaoSupport {
 		return 0;
 	}
 
-	// ¸ù¾Ý¶þ¼¶·ÖÀà²éÑ¯ÉÌÆ·ÐÅÏ¢
+	// ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Æ·ï¿½ï¿½Ï¢
 	public List<Product> findByPageCsid(Integer csid, int begin, int limit) {
 		String hql = "select p from Product p join p.categorySecond cs where cs.csid = ?";
-		// ·ÖÒ³µÄÁíÒ»ÖÖÐ´·¨
+		// ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ð´ï¿½ï¿½
 		Session session = getSession();
 		Query query = session.createQuery(hql);
 
@@ -95,7 +95,7 @@ public class ProductDao extends HibernateDaoSupport {
 		return null;
 	}
 
-	// ºóÌ¨Í³¼ÆÉÌÆ·¸öÊýµÄ·½·¨
+	// ï¿½ï¿½Ì¨Í³ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	public int findCount() {
 		String hql = "select count(*) from Product";
 		List<Long> list = this.getHibernateTemplate().find(hql);
@@ -105,21 +105,29 @@ public class ProductDao extends HibernateDaoSupport {
 		return 0;
 	}
 
-	// ºóÌ¨²éÑ¯ËùÓÐÉÌÆ·µÄ·½·¨
-	/*
-	 * public List<Product> findByPage(int begin, int limit) { String hql =
-	 * "from Product order by pdate desc"; List<Product> list =
-	 * this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql,
-	 * null, begin, limit)); if(list != null && list.size() > 0){ return list; }
-	 * return null; }
-	 */
+	// ï¿½ï¿½Ì¨ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Ä·ï¿½ï¿½ï¿½
+	
+	public List<Product> findByPage(int begin, int limit) {
+		String hql = "from Product order by pdate desc";
+		Session session = getSession();
+		Query query = session.createQuery(hql);
 
-	// DAOÖÐµÄ±£´æÉÌÆ·µÄ·½·¨
+		query.setFirstResult(begin);
+		query.setMaxResults(limit);
+		@SuppressWarnings("unchecked")
+		List<Product> list = query.list();
+		if (list != null && list.size() > 0) {
+			return list;
+		} 
+		return null;
+	}
+	 
+
 	public void save(Product product) {
 		this.getHibernateTemplate().save(product);
 	}
 
-	// DAOÖÐµÄÉ¾³ýÉÌÆ·µÄ·½·¨
+	// DAOï¿½Ðµï¿½É¾ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Ä·ï¿½ï¿½ï¿½
 	public void delete(Product product) {
 		this.getHibernateTemplate().delete(product);
 	}

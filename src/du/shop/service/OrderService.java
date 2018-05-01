@@ -16,32 +16,32 @@ import du.shop.util.PageBean;
  */
 @Transactional
 public class OrderService {
-	// ×¢ÈëOrderDao
+	// ×¢ï¿½ï¿½OrderDao
 	private OrderDao orderDao;
 
 	public void setOrderDao(OrderDao orderDao) {
 		this.orderDao = orderDao;
 	}
 
-	// ÒµÎñ²ã±£´æ¶©µ¥µÄ·½·¨
+	// Òµï¿½ï¿½ã±£ï¿½æ¶©ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	public void save(Order order) {
 		orderDao.save(order);
 	}
 
-	// ÒµÎñ²ã¸ù¾İÓÃ»§id²éÑ¯¶©µ¥,´ø·ÖÒ³²éÑ¯.
+	// Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯.
 	public PageBean<Order> findByUid(Integer uid, Integer page) {
 		PageBean<Order> pageBean = new PageBean<Order>();
-		// ÉèÖÃµ±Ç°Ò³Êı:
+		// ï¿½ï¿½ï¿½Ãµï¿½Ç°Ò³ï¿½ï¿½:
 		pageBean.setPage(page);
-		// ÉèÖÃÃ¿Ò³ÏÔÊ¾¼ÇÂ¼Êı:
-		// ÏÔÊ¾5¸ö
+		// ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½Â¼ï¿½ï¿½:
+		// ï¿½ï¿½Ê¾5ï¿½ï¿½
 		int limit = 5;
 		pageBean.setLimit(limit);
-		// ÉèÖÃ×Ü¼ÇÂ¼Êı:
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½:
 		int totalCount = 0;
 		totalCount = orderDao.findCountByUid(uid);
 		pageBean.setTotalCount(totalCount);
-		// ÉèÖÃ×ÜÒ³Êı
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		int totalPage = 0;
 		if (totalCount % limit == 0) {
 			totalPage = totalCount / limit;
@@ -49,35 +49,35 @@ public class OrderService {
 			totalPage = totalCount / limit + 1;
 		}
 		pageBean.setTotalPage(totalPage);
-		// ÉèÖÃÃ¿Ò³ÏÔÊ¾Êı¾İ¼¯ºÏ:
+		// ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½İ¼ï¿½ï¿½ï¿½:
 		int begin = (page - 1) * limit;
 		List<Order> list = orderDao.findPageByUid(uid, begin, limit);
 		pageBean.setList(list);
 		return pageBean;
 	}
 
-	// ¸ù¾İ¶©µ¥id²éÑ¯¶©µ¥
+	// ï¿½ï¿½ï¿½İ¶ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	public Order findByOid(Integer oid) {
 		return orderDao.findByOid(oid);
 	}
 
-	// ÒµÎñ²ãĞŞ¸Ä¶©µ¥µÄ·½·¨:
+	// Òµï¿½ï¿½ï¿½ï¿½Ş¸Ä¶ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½:
 	public void update(Order currOrder) {
 		orderDao.update(currOrder);
 	}
 
-	// ÒµÎñ²ã²éÑ¯ËùÓĞ¶©µ¥·½·¨
+	// Òµï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public PageBean<Order> findAll(Integer page) {
 		PageBean<Order> pageBean = new PageBean<Order>();
-		// ÉèÖÃ²ÎÊı
+		// ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 		pageBean.setPage(page);
-		// ÉèÖÃÃ¿Ò³ÏÔÊ¾µÄ¼ÇÂ¼Êı:
+		// ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ê¾ï¿½Ä¼ï¿½Â¼ï¿½ï¿½:
 		int limit = 10;
 		pageBean.setLimit(limit);
-		// ÉèÖÃ×Ü¼ÇÂ¼Êı
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½
 		int totalCount = orderDao.findCount();
 		pageBean.setTotalCount(totalCount);
-		// ÉèÖÃ×ÜÒ³Êı
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		int totalPage = 0;
 		if (totalCount % limit == 0) {
 			totalPage = totalCount / limit;
@@ -85,15 +85,41 @@ public class OrderService {
 			totalPage = totalCount / limit + 1;
 		}
 		pageBean.setTotalPage(totalPage);
-		// ÉèÖÃÃ¿Ò³ÏÔÊ¾Êı¾İ¼¯ºÏ
+		// ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½İ¼ï¿½ï¿½ï¿½
 		int begin = (page - 1) * limit;
 		List<Order> list = orderDao.findByPage(begin, limit);
 		pageBean.setList(list);
 		return pageBean;
 	}
 
-	// ÒµÎñ²ã²éÑ¯¶©µ¥ÏîµÄ·½·¨
+	// Òµï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	public List<OrderItem> findOrderItem(Integer oid) {
 		return orderDao.findOrderItem(oid);
+	}
+	public PageBean<Order> findByStatePage(Integer state, Integer page){
+		PageBean<Order> pageBean = new PageBean<Order>();
+		//è®¾ç½®å½“å‰é¡µ
+		pageBean.setPage(page);
+		//è®¾ç½®æ¯é¡µæ˜¾ç¤ºè®°å½•æ•°
+		Integer limit = 10;
+		pageBean.setLimit(limit);
+		//è®¾ç½®æ€»è®°å½•æ•°
+		Integer totalCount = null;
+		totalCount = orderDao.findByCount();
+		pageBean.setTotalCount(totalCount);
+		//æ€»é¡µæ•°
+		Integer totalPage = 0;
+		if(totalCount%limit==0){
+			totalPage = totalCount/limit;
+		}else{
+			totalPage = totalCount/limit+1;
+		}
+		pageBean.setTotalPage(totalPage);
+		//æ¯é¡µæ˜¾ç¤ºæ•°æ®çš„é›†åˆ
+		//å¼€å§‹çš„åœ°æ–¹
+		Integer begin = (page-1)*limit;
+		List<Order> list = orderDao.findByStatePage(state,begin,limit);
+		pageBean.setList(list);
+		return pageBean;
 	}
 }

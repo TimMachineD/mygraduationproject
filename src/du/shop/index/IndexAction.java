@@ -8,19 +8,21 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import du.shop.entity.Category;
 import du.shop.entity.CategorySecond;
+import du.shop.entity.Product;
 import du.shop.service.CategoryService;
+import du.shop.service.ProductService;
 
 /**
  * @version 1.0 2017-03-11
- * @author ¶ÅÔÆ·É
+ * @author ï¿½ï¿½ï¿½Æ·ï¿½
  *
  */
 public class IndexAction extends ActionSupport {
 
 	/**
-	 * ·µ»ØÊ×Ò³
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
 	 */
-	// ½ÓÊÕ·ÖÀàcid
+	// ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½cid
 	private Integer cid;
 	public void setCid(Integer cid) {
 		this.cid = cid;
@@ -29,43 +31,44 @@ public class IndexAction extends ActionSupport {
 	public Integer getCid() {
 		return cid;
 	}
-	// ×¢ÈëÒ»¼¶·ÖÀàµÄService:
+	// ×¢ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Service:
 	private CategoryService categoryService;
-	// ×¢ÈëÉÌÆ·µÄService
-	//private ProductService productService;
+	// ×¢ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½Service
+	private ProductService productService;
 
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 
-	/*public void setProductService(ProductService productService) {
+	public void setProductService(ProductService productService) {
 		this.productService = productService;
-	}*/
+	}
 
 	/**
-	 * Ö´ÐÐµÄ·ÃÎÊÊ×Ò³µÄ·½·¨:
+	 * Ö´ï¿½ÐµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½Ä·ï¿½ï¿½ï¿½:
 	 */
 	public String index() {
-		// ²éÑ¯ËùÓÐÒ»¼¶·ÖÀà¼¯ºÏ
+		// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½à¼¯ï¿½ï¿½
 		List<Category> cList = categoryService.findAll();
-		// ½«Ò»¼¶·ÖÀà´æÈëµ½SessionµÄ·¶Î§:
+		// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ëµ½Sessionï¿½Ä·ï¿½Î§:
 		ActionContext.getContext().getSession().put("cList", cList);
-		// ²éÑ¯ÈÈÃÅÉÌÆ·:
+		// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·:
 		//List<Product> hList = productService.findHot();
-		// ±£´æµ½ÖµÕ»ÖÐ:
+		// ï¿½ï¿½ï¿½æµ½ÖµÕ»ï¿½ï¿½:
 		//ActionContext.getContext().getValueStack().set("hList", hList);
-		// ²éÑ¯×îÐÂÉÌÆ·:
-		//List<Product> nList = productService.findNew();
-		// ±£´æµ½ÖµÕ»ÖÐ:
-		//ActionContext.getContext().getValueStack().set("nList", nList);
+		// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·:
+		List<Product> nList = productService.findNew();
+		// ï¿½ï¿½ï¿½æµ½ÖµÕ»ï¿½ï¿½:
+		ActionContext.getContext().getValueStack().set("nList", nList);
 		return "toIndex";
 	}
-	//²éÑ¯¶þ¼¶·ÖÀà
+	//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String showSecCategory() {
 		List<CategorySecond> csList = categoryService.findSecByCid(cid);
 		ActionContext.getContext().getSession().put("csList", csList);
 		return "toSecCategory";
 	}
+	
 	public String test() {
 		return "test";
 	}
